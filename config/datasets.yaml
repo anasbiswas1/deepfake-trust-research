@@ -1,0 +1,31 @@
+# storage: frames_persisted = preprocess -> Drive ; raw_stream = ephemeral local only
+# demo_labels: identity-bridge (Xu/GBDF) | aiface_annotator | none | partial_FS_FR
+timeline_core:
+  DF40:                {enabled: true,  modality: video+image, license: CC-BY-NC-4.0, role: generator_timeline+P3_unseen, demo_labels: partial_FS_FR, storage: frames_persisted}
+classic_video:
+  FaceForensics++:     {enabled: true,  modality: video, comp: [raw, c23, c40], license: EULA, role: train_source+degradation, demo_labels: identity-bridge, storage: frames_persisted}
+  Celeb-DF-v2:         {enabled: true,  modality: video, license: request, role: cross_domain+demo_bridge, demo_labels: identity-bridge, storage: frames_persisted}
+  DFDC:                {enabled: true,  modality: video, license: public, role: cross_domain, demo_labels: identity-bridge, storage: frames_persisted}
+  DFDC-Preview:        {enabled: false, modality: video, license: public, role: quick_dev, storage: frames_persisted}
+  DeeperForensics-1.0: {enabled: true,  modality: video, license: request, role: perturbation_robustness, demo_labels: identity-bridge, storage: frames_persisted}
+  DFD:                 {enabled: true,  modality: video, license: public, role: cross_domain, demo_labels: identity-bridge, storage: frames_persisted}
+  WildDeepfake:        {enabled: true,  modality: video, license: request, role: in_the_wild, demo_labels: none, storage: frames_persisted}
+  UADFV:               {enabled: false, modality: video, license: request, role: legacy_anchor, storage: frames_persisted}
+  FaceShifter:         {enabled: false, modality: video, license: EULA, role: cross_manip, storage: frames_persisted}
+  DF-TIMIT:            {enabled: false, modality: video, license: request, role: legacy_anchor, storage: frames_persisted}
+in_the_wild:
+  Deepfake-Eval-2024:  {enabled: true,  modality: video+audio+image, license: public, role: realism_stress, demo_labels: none, storage: frames_persisted}
+diffusion_image:
+  DiffusionFace:       {enabled: true,  modality: image, license: public, role: diffusion_gen, demo_labels: none, storage: frames_persisted}
+  DiFF:                {enabled: true,  modality: image, license: public, role: diffusion_gen, demo_labels: none, storage: frames_persisted}
+  GenImage:            {enabled: false, modality: image, license: public, role: nonface_diffusion, storage: frames_persisted}
+fairness_labels:
+  Xu-65.3M:            {enabled: true,  role: demo_annotations, covers: [FF++, Celeb-DF, DFD, DeeperForensics, DFDC]}
+  GBDF:                {enabled: true,  role: gender_balanced+accgap_baseline, storage: frames_persisted}
+  AI-Face:             {enabled: true,  role: intersectional+annotator_template, license: request, storage: frames_persisted}
+audio_av_extension:
+  ASVspoof2021:        {enabled: false, modality: audio, license: public, role: audio_calib}
+  WaveFake:            {enabled: false, modality: audio, license: public}
+  FakeAVCeleb:         {enabled: false, modality: av, license: request}
+  LAV-DF:              {enabled: false, modality: av, license: request}
+  AV-Deepfake1M:       {enabled: false, modality: av, license: request}

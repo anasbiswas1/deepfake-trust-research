@@ -1,0 +1,19 @@
+seeds: [42, 1337, 2024]
+bootstrap_B: 2000
+ci_percentiles: [2.5, 97.5]
+ece:
+  binning: equal_mass        # equal-width is biased; report debiased + sweep alongside
+  n_bins: 15
+  estimators: [equal_mass, debiased, sweep]
+calibration:
+  switch_threshold_n: 1000   # n_calib < t -> Platt ; >= t -> isotonic
+  methods: [uncalibrated, platt, isotonic, temperature, beta, histogram, bbq, spline, dirichlet]
+drift:
+  detectors: [amoc, cusum, ewma, page_hinkley, adwin, ddm, eddm]
+  alarm: { far_target: 0.05, consecutive_windows: 2 }   # PRE-REGISTERED
+coupling:
+  rank_tests: [spearman, kendall]
+  prereg_locked: true
+  null_interpretation: five_panel_dashboard
+degradations: [clean, c23, c40, lowres, noise, blur]
+deepfakebench_pinned_commit: "f188b1c105465e2e5377eb536a95022ae0e4522d"

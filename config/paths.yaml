@@ -1,0 +1,12 @@
+# Read paths ONLY from here. Hardcoding a path inline is the X-IDS seed-42 bug. Don't.
+drive_root:    /content/drive/MyDrive/CDTS_Research
+repo:          /content/drive/MyDrive/CDTS_Research/deepfake-trust-research
+raw_tmp:       /content/_raw_tmp                # EPHEMERAL local disk: raw video, discarded each session
+frames:        /content/drive/MyDrive/CDTS_Research/deepfake-trust-research/data/frames               # persisted cropped faces (Drive, gitignored)
+logits:        /content/drive/MyDrive/CDTS_Research/deepfake-trust-research/data/logits               # persisted score tables .parquet (Drive, gitignored)
+calibrators:   /content/drive/MyDrive/CDTS_Research/deepfake-trust-research/data/calibrators          # fitted calibrators (Drive, gitignored)
+weights:       /content/drive/MyDrive/CDTS_Research/deepfake-trust-research/weights                    # pretrained backbone weights (Drive, gitignored)
+results:       /content/drive/MyDrive/CDTS_Research/deepfake-trust-research/results                    # aggregated metric CSVs  (committed to GitHub)
+figures:       /content/drive/MyDrive/CDTS_Research/deepfake-trust-research/figures                    # figures               (committed to GitHub)
+prereg:        /content/drive/MyDrive/CDTS_Research/deepfake-trust-research/prereg
+deepfakebench: /content/drive/MyDrive/CDTS_Research/deepfake-trust-research/external/DeepfakeBench

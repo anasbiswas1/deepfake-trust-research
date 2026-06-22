@@ -1,0 +1,11 @@
+data/
+weights/
+_raw_tmp/
+*.pth
+*.pt
+*.mp4
+*.avi
+__pycache__/
+.ipynb_checkpoints/
+.git-credentials
+.gitconfig

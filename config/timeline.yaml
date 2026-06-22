@@ -1,0 +1,14 @@
+# Ordering rule: approximate software/paper release year. Ambiguous cases
+# (DeepFaceLab, HeyGen, MidJourney6) tie-broken to the EARLIER plausible year.
+# Treat ordering as a modeling choice (+/- 1yr), not ground truth.
+rule: "release_year; tie_break=earlier; uncertainty=+/-1yr"
+eras:
+  "2016": [FaceSwap]
+  "2018": [StarGAN]
+  "2019": [FSGAN, FOMM, FS_vid2vid, WhichisReal]
+  "2020": [SimSwap, DeepFaceLab, Wav2Lip, DDPM, StyleGAN2, StarGANv2]
+  "2021": [MRAA, OneShot, PIRender, StyleGAN3, VQGAN, e4e, StyleCLIP]
+  "2022": [MobileSwap, UniFace, TPSM, LIA, DaGAN, StyleGAN-XL, DiT-XL2, SD-2.1]
+  "2023": [BlendFace, InSwapper, e4s, FaceDancer, SadTalker, MCNet, HyperReenact, HeyGen, PixArt-alpha, CollabDiff]
+  "2024": [RDDM, SiT-XL2, MidJourney6]
+p3_unseen: [DeepFaceLab, HeyGen, WhichisReal, MidJourney6, StarGAN, StarGANv2, StyleCLIP, e4e, CollabDiff]

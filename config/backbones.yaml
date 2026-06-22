@@ -1,0 +1,6 @@
+tier1_naive:      {Xception: {within: 94.50, weights: dfb}, EfficientNetB4: {within: 93.89, weights: dfb}, MesoInception4: {weights: dfb}}
+tier2_forensic:   {F3Net: {within: 94.49, weights: dfb}, SPSL: {weights: dfb}, SRM: {weights: dfb}, Capsule: {weights: dfb}, FaceXray: {weights: dfb}, CORE: {weights: dfb}, RECCE: {weights: dfb}}
+tier3_generalize: {UCF: {within: 95.37, cross: 78.01, weights: dfb}, LSDA: {weights: dfb}}
+tier4_foundation: {CLIP_linearprobe: {note: "71->94 cross via frozen backbone + new head", weights: ojha}, CLIPping: {note: "+5.01 mAP over SOTA", weights: ext}, HAMLET_FFD: {cross: 90.07, weights: ext}}
+tier5_temporal:   {LipForensics: {weights: ext}, RealForensics: {weights: ext}, AltFreezing: {weights: ext}, FTCN: {weights: ext}, UIA_ViT: {weights: dfb}}
+# train all on FF++ c23 (DeepfakeBench default). 'dfb' = weights shipped by DeepfakeBench.
