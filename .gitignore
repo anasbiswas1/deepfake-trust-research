@@ -17,3 +17,9 @@ __pycache__/
 # secrets
 .git-credentials
 .gitconfig
+
+# annotation data — large, Drive-only
+data/annotations/
+
+# DF40 data — large zips + JSONs, Drive-only
+data/df40/
