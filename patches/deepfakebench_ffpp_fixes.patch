@@ -1,0 +1,30 @@
+diff --git a/preprocessing/preprocess.py b/preprocessing/preprocess.py
+index f6e0aea..73ef7e2 100644
+--- a/preprocessing/preprocess.py
++++ b/preprocessing/preprocess.py
+@@ -356,7 +356,7 @@ def preprocess(dataset_path, mask_path, mode, num_frames, stride, logger):
+     movies_path_list = sorted([Path(p) for p in glob.glob(os.path.join(dataset_path, '**/*.mp4'), recursive=True)])
+     if len(movies_path_list) == 0:
+         logger.error(f"No videos found in {dataset_path}")
+-        sys.exit()
++        return
+     logger.info(f"{len(movies_path_list)} videos found in {dataset_path}")
+     
+     # Define paths to masks in dataset
+diff --git a/preprocessing/rearrange.py b/preprocessing/rearrange.py
+index d58b30c..09b4ff6 100644
+--- a/preprocessing/rearrange.py
++++ b/preprocessing/rearrange.py
+@@ -215,9 +215,9 @@ def generate_dataset_file(dataset_name, dataset_root_path, output_file_path, com
+         # get the DeepfakeDetection dataset from FaceForensics++ dataset
+         if dataset_name == 'FaceForensics++':
+             # Delete the DeepfakeDetection dataset from FaceForensics++ dataset
+-            del dataset_dict['FaceForensics++']['DFD_fake']
+-            del dataset_dict['FaceForensics++']['DFD_real']
+-            del dataset_dict['FaceForensics++']['FF-FH']
++            dataset_dict['FaceForensics++'].pop('DFD_fake', None)
++            dataset_dict['FaceForensics++'].pop('DFD_real', None)
++            dataset_dict['FaceForensics++'].pop('FF-FH', None)
+         elif dataset_name == 'DeepFakeDetection':
+             # Check if the DeepfakeDetection dataset is in the FaceForensics++ dataset
+             if 'DFD_fake' in dataset_dict['FaceForensics++'] and \

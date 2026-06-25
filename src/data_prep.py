@@ -155,14 +155,21 @@ def build_manifest_from_json(dataset, json_path, era_map=None, frames_root=None)
         label = _infer_label(frame_paths, trail, node)
         vid = _video_id(frame_paths, node)
         ident = identity_from_videoid(dataset, vid)
-        method = trail[-1].lower() if trail else dataset.lower()
+        # method comes from the method-level key in the trail (e.g. FF-DF), not the leaf video id
+        _method_norm = {"ff-real":"real","ff-df":"deepfakes","ff-f2f":"face2face",
+                        "ff-fs":"faceswap","ff-nt":"neuraltextures"}
+        method = dataset.lower()
+        for _t in trail:
+            if _t.lower() in _method_norm:
+                method = _method_norm[_t.lower()]; break
+        split = next((_t for _t in trail if _t in ("train","val","test")), "")
         era = era_map.get(method, "")
         for fp in frame_paths:
             path = os.path.join(frames_root, fp) if frames_root else fp
             rows.append({
                 "frame_path": path, "dataset": dataset, "label": int(label),
                 "video_id": str(vid), "identity_id": str(ident),
-                "method": method, "era": era, "split_pool": "heldout",
+                "method": method, "era": era, "split": split, "split_pool": "heldout",
             })
     df = pd.DataFrame(rows)
     if not df.empty:

@@ -1,11 +1,19 @@
-data/
+# heavy data — frames stay on Drive only, never git
+data/frames/
+data/**/frames/
 weights/
 _raw_tmp/
+_hold*/
+_nt_half*/
 *.pth
 *.pt
 *.mp4
 *.avi
+# backups & caches
+*.orig
+*.orig2
 __pycache__/
 .ipynb_checkpoints/
+# secrets
 .git-credentials
 .gitconfig
