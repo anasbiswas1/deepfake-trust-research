@@ -23,3 +23,6 @@ data/annotations/
 
 # DF40 data — large zips + JSONs, Drive-only
 data/df40/
+
+# DF40 core method copy - large zips, Drive-only
+data/df40_core/
