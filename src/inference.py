@@ -55,13 +55,29 @@ def _import_detector_class(dfb_root, backbone_name):
     det_dir = f"{train_dir}/detectors"
 
     # stub the 'detectors' package so `from detectors import DETECTOR` resolves
-    # without running its __init__ (which pulls slowfast/fvcore/etc.)
-    if "detectors" not in sys.modules:
-        from metrics.registry import DETECTOR  # registry lives in metrics, light import
-        stub = types.ModuleType("detectors")
-        stub.DETECTOR = DETECTOR
-        stub.__path__ = [det_dir]
-        sys.modules["detectors"] = stub
+    # without running its __init__ (which pulls slowfast/fvcore/etc.).
+    # ALWAYS rebuild against the CURRENT metrics.registry (a stale stub from a
+    # previous cell can hold a divergent registry instance -> empty-registry KeyError).
+    from metrics.registry import DETECTOR
+    stub = types.ModuleType("detectors")
+    stub.DETECTOR = DETECTOR
+    stub.__path__ = [det_dir]
+    sys.modules["detectors"] = stub
+    # ensure the networks package backbones are registered (populates BACKBONE);
+    # import the specific backbone module the detector needs.
+    import importlib as _il
+    try:
+        _il.import_module("networks")
+    except Exception:
+        # networks/__init__ may also pull heavy deps; import the xception net directly
+        _bspec = importlib.util.spec_from_file_location(
+            "networks.xception", f"{train_dir}/networks/xception.py")
+        if _bspec is not None:
+            _bmod = importlib.util.module_from_spec(_bspec)
+            sys.modules.setdefault("networks", types.ModuleType("networks"))
+            sys.modules["networks"].__path__ = [f"{train_dir}/networks"]
+            sys.modules["networks.xception"] = _bmod
+            _bspec.loader.exec_module(_bmod)
 
     mod_name = f"detectors.{backbone_name}_detector"
     spec = importlib.util.spec_from_file_location(mod_name, f"{det_dir}/{fname}")

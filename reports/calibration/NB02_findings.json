@@ -30,5 +30,21 @@
       "cal_ECE": 0.2068,
       "reduction_pct": 70.2
     }
+  },
+  "df40_scaling": {
+    "date": "2026-06-26T05:49:43.655714",
+    "df40_methods_scored": 8,
+    "df40_only_coupling": {
+      "pearson_r": -0.585,
+      "pearson_p": 0.128,
+      "note": "weak/ns - DF40 calibrates well across competence range"
+    },
+    "combined_16pt_coupling": {
+      "pearson_r": -0.779,
+      "pearson_p": 0.0004,
+      "spearman_rho": -0.791,
+      "spearman_p": 0.0003
+    },
+    "interpretation": "coupling significant across full AUC range (0.39-0.97); driven by low-competence regime; DF40 high-competence methods calibrate well regardless of AUC; possible dataset effect (FFpp higher ECE than DF40 at similar AUC) to disentangle"
   }
 }
