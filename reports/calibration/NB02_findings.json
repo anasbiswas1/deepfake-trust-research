@@ -1,0 +1,34 @@
+{
+  "experiment": "NB02_competence_calibration_coupling",
+  "date": "2026-06-26T03:52:15.421361",
+  "datasets": {
+    "eval": "FaceForensics++ c23 test split",
+    "frames_per_ckpt": 22388
+  },
+  "checkpoints": [
+    "train_on_fs/xception.pth",
+    "train_on_fr/xception.pth"
+  ],
+  "backbone": "xception (DeepfakeBench)",
+  "calibrator": "HybridCalibrator (Platt n<1000 / isotonic n>=1000), Option D",
+  "split": "leakage_safe group-disjoint by identity_id, calib_frac=0.5, seed=42",
+  "metrics": "ECE equal-mass 15-bin, Brier, bootstrap CI B=2000 stratified",
+  "finding": {
+    "AUC_vs_ECEcal_pearson_r": -0.8171,
+    "AUC_vs_ECEcal_pearson_p": 0.0133,
+    "AUC_vs_ECEcal_spearman_rho": -0.8095,
+    "interpretation": "calibration error rises as detection competence (AUC) falls; calibration fit in a competent regime fails to transfer to incompetent regimes"
+  },
+  "per_ckpt_pooled": {
+    "train_on_fs": {
+      "raw_ECE": 0.4553,
+      "cal_ECE": 0.0473,
+      "reduction_pct": 89.6
+    },
+    "train_on_fr": {
+      "raw_ECE": 0.6937,
+      "cal_ECE": 0.2068,
+      "reduction_pct": 70.2
+    }
+  }
+}
