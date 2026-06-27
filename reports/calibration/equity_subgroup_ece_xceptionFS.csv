@@ -1,0 +1,10 @@
+axis,group,n,ECE,low_power
+gender,male=1,5117,0.07346900512751184,False
+gender,male=0,6073,0.06422076935771753,False
+age,young,5755,0.060767171579042725,False
+age,middle_aged,959,0.11476895301064426,False
+age,senior,1120,0.07537338275920885,False
+ethnicity,asian,639,0.06104248686188554,False
+ethnicity,white,9273,0.03400258938347635,False
+skintone,shiny_skin=1,5753,0.07687171386791261,False
+skintone,shiny_skin=0,2560,0.06175423369087487,False

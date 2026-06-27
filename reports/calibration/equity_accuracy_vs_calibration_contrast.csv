@@ -1,0 +1,4 @@
+axis,AUC_gap,ECE_gap,calib_reveals_more
+gender (M vs F),0.005214371612796698,0.009248235769794305,True
+skintone (shiny vs not),0.0006477043796385695,0.015117480177037741,True
+age (young vs senior),0.048904966984427034,0.014606211180166126,False
