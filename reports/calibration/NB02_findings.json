@@ -46,5 +46,39 @@
       "spearman_p": 0.0003
     },
     "interpretation": "coupling significant across full AUC range (0.39-0.97); driven by low-competence regime; DF40 high-competence methods calibrate well regardless of AUC; possible dataset effect (FFpp higher ECE than DF40 at similar AUC) to disentangle"
+  },
+  "confound_breaker_NB04": {
+    "date": "2026-06-27T03:17:47.046010",
+    "method": "FR (reenactment) checkpoint on DF40 FS/EFS methods to force low competence",
+    "fr_df40_points": {
+      "StyleGAN2": {
+        "AUC": 0.256,
+        "ECE_cal": 0.268
+      },
+      "sd2.1": {
+        "AUC": 0.329,
+        "ECE_cal": 0.268
+      },
+      "simswap": {
+        "AUC": 0.363,
+        "ECE_cal": 0.301
+      },
+      "blendface": {
+        "AUC": 0.457,
+        "ECE_cal": 0.248
+      }
+    },
+    "within_df40_coupling": {
+      "n": 12,
+      "pearson_r": -0.939,
+      "pearson_p": "<0.0001",
+      "note": "was -0.585 n.s. with only FS-DF40; FR-mismatch points break the confound"
+    },
+    "full_coupling": {
+      "n": 20,
+      "pearson_r": -0.802,
+      "pearson_p": "<0.0001"
+    },
+    "verdict": "CONFOUND BROKEN. Competence-driven not dataset. 4/4 low-AUC DF40 points show high ECE_cal."
   }
 }
