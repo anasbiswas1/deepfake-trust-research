@@ -1,0 +1,5 @@
+method,backbone,AUC,ECE_cal
+effnetb4_faceswap,efficientnetb4,0.9256611022187047,0.05804921115423393
+effnetb4_deepfakes,efficientnetb4,0.7599442664260672,0.11764355668947403
+effnetb4_face2face,efficientnetb4,0.6589710409621643,0.15638167638843742
+effnetb4_neuraltextures,efficientnetb4,0.5650687465951849,0.26511560252578503
