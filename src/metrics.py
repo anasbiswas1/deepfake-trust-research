@@ -55,6 +55,14 @@ def _bin_indices(p, n_bins, scheme="equal_mass"):
     """Return a list of index arrays, one per bin."""
     n = p.size
     if scheme == "equal_mass":
+        # tie-safe: break ties randomly (seeded) so bins do not follow input row order.
+        # Stable-sort tie handling is degenerate on tie-heavy predictions (e.g. isotonic
+        # outputs): with label-ordered rows a CONSTANT predictor is assigned ECE ~ 2p(1-p)
+        # instead of ~|prevalence shift|. See NB20 regression test.
+        _rng = np.random.default_rng(0)
+        order = np.argsort(p + _rng.random(p.size) * 1e-12, kind="mergesort")
+        return [b for b in np.array_split(order, n_bins) if b.size > 0]
+    elif scheme == "equal_mass_legacy":
         order = np.argsort(p, kind="mergesort")
         return [b for b in np.array_split(order, n_bins) if b.size > 0]
     elif scheme == "equal_width":
