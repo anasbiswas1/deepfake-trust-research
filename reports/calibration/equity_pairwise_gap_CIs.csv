@@ -1,0 +1,7 @@
+pair,metric,point,se,ci_lo,ci_hi,excludes_0
+gender (M vs F),AUC_gap,-0.0061,0.0202,-0.0476,0.0316,False
+gender (M vs F),ECE_gap,0.0092,0.0104,0.0038,0.0445,True
+skin attr (shiny vs not),AUC_gap,0.0025,0.0215,-0.038,0.0451,False
+skin attr (shiny vs not),ECE_gap,0.0151,0.0123,0.0093,0.0577,True
+age (young vs senior),AUC_gap,0.0491,0.0374,-0.0081,0.1386,False
+age (young vs senior),ECE_gap,-0.0146,0.0229,-0.0331,0.0571,False

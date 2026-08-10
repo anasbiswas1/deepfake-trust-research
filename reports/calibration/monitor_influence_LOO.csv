@@ -1,0 +1,7 @@
+set,signal,r_full,r_loo_min,r_loo_max,most_influential,sign_stable
+21-gen timeline,entropy,-0.681,-0.837,-0.637,rddm,True
+21-gen timeline,std_score,-0.739,-0.812,-0.707,rddm,True
+21-gen timeline,ks_vs_ref,0.952,0.946,0.961,rddm,True
+21-gen timeline,wasserstein_vs_ref,0.884,0.87,0.914,pixart,True
+20-gen unified,entropy,-0.837,-0.86,-0.816,pixart,True
+20-gen unified,ks_vs_ref,0.961,0.957,0.968,pixart,True

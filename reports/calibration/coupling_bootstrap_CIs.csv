@@ -1,5 +1,5 @@
-architecture,n,r,ci_lo,ci_hi,source
-Xception,20,-0.88,-0.95,-0.79,unified_trust_signals.csv
-CLIP-ViT,20,-0.859,-0.93,-0.75,unified_trust_signals_clip.csv
-EfficientNet-B4,8,-0.707,-0.96,-0.29,coupling_effnetb4_df40.csv
-POOLED,32,-0.807,-0.9,-0.7,coupling_full_grid.csv
+architecture,n,r,ci_lo,ci_hi,B,seed,source
+Xception,20,-0.88,-0.945,-0.783,5000,42,unified_trust_signals.csv
+EfficientNet-B4,20,-0.833,-0.92,-0.699,5000,42,unified_trust_signals_effnet.csv
+CLIP-ViT,20,-0.859,-0.933,-0.749,5000,42,unified_trust_signals_clip.csv
+POOLED,32,-0.807,-0.901,-0.698,5000,42,coupling_full_grid.csv

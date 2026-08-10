@@ -1,0 +1,5 @@
+routing,n_frames,ks_reference,AURC,AURC_sd,err40,err70,err80,err90
+confidence (per-frame),593502,ffpp_faceswap+reals,0.2208,0.0,0.2061,0.2874,0.3025,0.3168
+batch dispersion,593502,ffpp_faceswap+reals,0.2121,0.0001,0.1527,0.2808,0.31,0.3256
+batch entropy,593502,ffpp_faceswap+reals,0.2219,0.0001,0.17,0.3082,0.3127,0.3358
+batch KS (ref-div),593502,ffpp_faceswap+reals,0.194,0.0001,0.1561,0.2392,0.279,0.3056

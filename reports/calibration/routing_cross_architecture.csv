@@ -1,0 +1,13 @@
+architecture,routing,n_frames,ks_reference,AURC,AURC_sd,err40,err70,err80,err90
+xception,confidence (per-frame),593502,ffpp_faceswap+reals,0.2208,0.0,0.2061,0.2874,0.3025,0.3168
+xception,batch dispersion,593502,ffpp_faceswap+reals,0.2121,0.0001,0.1527,0.2808,0.31,0.3256
+xception,batch entropy,593502,ffpp_faceswap+reals,0.2219,0.0001,0.17,0.3082,0.3127,0.3358
+xception,batch KS (ref-div),593502,ffpp_faceswap+reals,0.194,0.0001,0.1561,0.2392,0.279,0.3056
+effnetb4,confidence (per-frame),573855,ffpp_faceswap+reals,0.3854,0.0,0.3925,0.4466,0.4583,0.466
+effnetb4,batch dispersion,573855,ffpp_faceswap+reals,0.3728,0.0001,0.3614,0.4163,0.4258,0.446
+effnetb4,batch entropy,573855,ffpp_faceswap+reals,0.3539,0.0001,0.3833,0.4315,0.457,0.4686
+effnetb4,batch KS (ref-div),573855,ffpp_faceswap+reals,0.5318,0.0001,0.5384,0.5177,0.5074,0.4871
+clip,confidence (per-frame),573855,in-domain_DF40_FS_pool,0.1061,0.0,0.0651,0.1685,0.1983,0.226
+clip,batch dispersion,573855,in-domain_DF40_FS_pool,0.1569,0.0001,0.1371,0.186,0.207,0.2308
+clip,batch entropy,573855,in-domain_DF40_FS_pool,0.1591,0.0001,0.1433,0.1874,0.2144,0.2376
+clip,batch KS (ref-div),573855,in-domain_DF40_FS_pool,0.3561,0.0002,0.3703,0.3095,0.2899,0.2693
