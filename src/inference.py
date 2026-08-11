@@ -65,18 +65,26 @@ def _import_detector_class(dfb_root, backbone_name):
     sys.modules["detectors"] = stub
     # ensure the networks package backbones are registered (populates BACKBONE);
     # import the specific backbone module the detector needs.
+    # import the networks PACKAGE so ALL backbones register (its __init__ imports
+    # xception, efficientnetb4, resnet34, mesonet, etc. -> populates BACKBONE registry).
+    # Must run with training/ on sys.path (it is, set above).
     import importlib as _il
+    if "networks" in sys.modules:
+        del sys.modules["networks"]   # force fresh registration on this runtime
     try:
         _il.import_module("networks")
-    except Exception:
-        # networks/__init__ may also pull heavy deps; import the xception net directly
+    except Exception as _e:
+        print(f"  [inference] networks package import warning: {_e}")
+        # fallback: import the specific backbone module by file
+        _bb_file = {"xception":"xception.py","efficientnetb4":"efficientnetb4.py",
+                    "f3net":"xception.py","clip":"clip.py"}.get(backbone_name, "xception.py")
         _bspec = importlib.util.spec_from_file_location(
-            "networks.xception", f"{train_dir}/networks/xception.py")
+            f"networks.{backbone_name}", f"{train_dir}/networks/{_bb_file}")
         if _bspec is not None:
-            _bmod = importlib.util.module_from_spec(_bspec)
             sys.modules.setdefault("networks", types.ModuleType("networks"))
             sys.modules["networks"].__path__ = [f"{train_dir}/networks"]
-            sys.modules["networks.xception"] = _bmod
+            _bmod = importlib.util.module_from_spec(_bspec)
+            sys.modules[f"networks.{backbone_name}"] = _bmod
             _bspec.loader.exec_module(_bmod)
 
     mod_name = f"detectors.{backbone_name}_detector"
