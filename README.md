@@ -1,4 +1,9 @@
 # deepfake-trust-research
+
+## Correction (Aug 2026)
+
+The preprint v1's central negative claim was an artifact of a tie-handling degeneracy in the stable-sort equal-mass ECE estimator (nearest prior observation: Pernot, arXiv:2306.05180, for regression-uncertainty binning; the label-ordered classification case here is its deterministic, selective extreme). `src/metrics.py` is patched (tie-safe default; legacy retained as `equal_mass_legacy`); a constant-prevalence regression test is included. Corrected results and full audit: see manuscript v2 (arXiv:2606.29484v2). Audit scripts and their outputs live in `audits/`.
+
 Calibrated Deepfake Trust Score (CDTS) - a self-auditing trust instrument for
 deepfake detection under Graceful Trust Degradation (GTD).
 
