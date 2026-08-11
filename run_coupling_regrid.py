@@ -11,6 +11,8 @@ import numpy as np, pandas as pd
 from scipy.stats import pearsonr
 from sklearn.metrics import roc_auc_score
 import calibration as cal, metrics as met
+import os
+os.makedirs('audits', exist_ok=True)
 
 RNG = np.random.default_rng(0)
 
@@ -67,7 +69,7 @@ for det, (key, gens) in DETECTORS.items():
               f"  platt {r['platt__tiesafe']:.3f}  beta {r['beta__tiesafe']:.3f}  isoOr {r['iso_oriented__tiesafe']:.3f}")
 
 D = pd.DataFrame(all_rows)
-D.to_csv('/home/claude/coupling_regrid_pergen.csv', index=False)
+D.to_csv('audits/coupling_regrid_pergen.csv', index=False)
 
 print("\n" + "=" * 90)
 print("COUPLING r (Pearson AUC ~ ECE) per detector, per calibrator x estimator")
@@ -94,5 +96,5 @@ for v in ['hybrid__tiesafe', 'platt__tiesafe', 'beta__tiesafe']:
     print(f"  {v:22s} full r={full[0]:+.3f}  excl<0.5 r={r_excl[0]:+.3f} (n={len(excl)})"
           f"  AUC* r={star[0]:+.3f}  band0.6-0.85 r={r_band[0]:+.3f} (n={len(band)}, p={r_band[1]:.3f})")
 
-pd.DataFrame(summary).to_csv('/home/claude/coupling_regrid_summary.csv', index=False)
+pd.DataFrame(summary).to_csv('audits/coupling_regrid_summary.csv', index=False)
 print("\nsaved coupling_regrid_pergen.csv + coupling_regrid_summary.csv")

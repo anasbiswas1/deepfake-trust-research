@@ -61,7 +61,7 @@ for det, (key, csv) in DET.items():
     print(f"  {det:9s} raw-ECE~AUC r = {r:+.3f} (p={pv:.2e}), raw-ECE range {e.min():.3f}-{e.max():.3f}")
     for auc_, ece_, gen_ in pts:
         raw_rows.append(dict(detector=det, method=gen_, AUC=auc_, ECE_raw_tiesafe=ece_))
-pd.DataFrame(raw_rows).to_csv('/home/claude/raw_ece_tiesafe.csv', index=False)
+pd.DataFrame(raw_rows).to_csv('audits/raw_ece_tiesafe.csv', index=False)
 
 # ---------- 3. transferred calibrator (Section 4.7), Xception ----------
 print("\n### 3. TRANSFERRED calibrator on Xception (fit once on in-domain FS pool, frozen)")
@@ -90,7 +90,7 @@ for gen in gens21:
         row[f'ECE_transf_{name}'] = ece_tiesafe(c.predict(pt), yt)
     rows.append(row)
 T = pd.DataFrame(rows)
-T.to_csv('/home/claude/transferred_tiesafe.csv', index=False)
+T.to_csv('audits/transferred_tiesafe.csv', index=False)
 print(T.round(3).to_string(index=False))
 for name in ['iso', 'platt', 'beta']:
     r, pv = pearsonr(T.AUC, T[f'ECE_transf_{name}'])
@@ -104,6 +104,8 @@ print(f"  transferred-iso mean ECE: AUC>0.85 {hi.ECE_transf_iso.mean():.3f}  vs 
 # ---------- 4. DFD whole-dataset points, tie-safe ----------
 print("\n### 4. DFD whole-dataset oracle points, tie-safe (vs paper 0.127/0.138/0.062)")
 import urllib.request
+import os
+os.makedirs('audits', exist_ok=True)
 for f in ['xceptionFS_DFD', 'effnetb4FS_DFD', 'clipFS_DFD']:
     path = f'reports/scores/{f}.parquet'
     import os
