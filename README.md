@@ -13,6 +13,8 @@ deepfake detection under Graceful Trust Degradation (GTD).
 DeepfakeBench pinned at commit `f188b1c105465e2e5377eb536a95022ae0e4522d`.
 
 **Layout:** `notebooks/` (numbered analysis stages), `src/` (shared modules), `audits/`
-(estimator-audit scripts and outputs), `reports/` (result CSVs), `figures/` (manuscript
-figures, `v3_fig_*` current), `legacy/` (pre-correction drafts, figures, and derived
+(estimator-audit scripts and outputs), `reports/` (result CSVs), `figures/` (historical
+manuscript figures; the submission set, renumbered and title-free, is in
+`figures/submission/`, with Fig12–Fig13 regenerated and verified by
+`run_routing_figures.py`), `legacy/` (pre-correction drafts, figures, and derived
 tables, preserved for the record; see `legacy/README.md`).
